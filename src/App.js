@@ -8,15 +8,17 @@ const App = () => {
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
 
-	const beer = useSelector((state) => state.data);
+	const name = useSelector((state) => state.name);
+	const image = useSelector((state) => state.image);
 
 	const onSubmit = (data) => {
 		dispatch(getBeer(data.beerID))
 	}
 
 	useEffect(() => {
-		beer !== null ? setLoading(false) : setLoading(true)
-	}, [beer]);
+		name !== null ? setLoading(false) : setLoading(true)
+		image !== null ? setLoading(false) : setLoading(true)
+	}, [name, image]);
 
 	return (
 		<div className="App">
@@ -35,8 +37,8 @@ const App = () => {
 				<h2 className="centered">LOADING...</h2>
 				:
 				<div className="centered"> 
-					<p className="centered">{beer[0].name}</p>
-					<img className="centered img" src={beer[0].image_url} alt={beer[0].name} />
+					<p className="centered">{name}</p>
+					<img className="centered img" src={image} alt={name} />
 				</div>
 			}
 		</div>

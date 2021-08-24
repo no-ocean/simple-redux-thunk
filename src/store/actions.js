@@ -10,7 +10,11 @@ export const beerMiddleware = (storeAPI) => (next) => (action) => {
     if (action.type === "GET_BEER") {
         fetch(`https://api.punkapi.com/v2/beers/${action.beerID}`)
             .then((res) => res.json())
-            .then(data => storeAPI.dispatch({ type: "SET_BEER", data: data}))
+            .then(data => storeAPI.dispatch({ 
+                type: "SET_BEER", 
+                name: data[0].name,
+                image: data[0].image_url
+            }));
     }
 
     return next(action)

@@ -1,7 +1,7 @@
-export const beerReducer = (state= {data: null}, action) => {
+export const beerReducer = (state= {name: null, image: null}, action) => {
     switch(action.type) {
         case "SET_BEER":
-            return { data: action.data };
+            return { name: action.name, image: action.image };
         default:
             return state;
     }
